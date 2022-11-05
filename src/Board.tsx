@@ -1,15 +1,22 @@
 import { Button, Col, Container, Row, Table } from "react-bootstrap";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-type PostList = {
-  title: string;
+type Comment = {
+  content: string;
   date: string;
-  commentsNum: number;
+  post: Post;
+};
+type Post = {
+  board: string;
+  title: string;
+  content: string;
+  date: string;
+  comments: Comment[];
 };
 
 function Board() {
-  const [posts, setPosts] = useState<PostList[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(false);
 
   const fetchPosts = async () => {
@@ -23,6 +30,10 @@ function Board() {
     }
     setLoading(false);
   };
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
   if (loading) return <div>loading</div>;
 
@@ -46,7 +57,7 @@ function Board() {
           <thead>
             <tr>
               <th>제목</th>
-              <th>댓글</th>
+              <th>댓글수</th>
               <th>작성일시</th>
             </tr>
           </thead>
@@ -54,12 +65,15 @@ function Board() {
             {posts.map((post) => (
               <tr>
                 <td>{post.title}</td>
+                <td>{post.comments.length}</td>
                 <td>{post.date}</td>
-                <td>{post.commentsNum}</td>
               </tr>
             ))}
           </tbody>
         </Table>
+        <Button variant="light" onClick={fetchPosts}>
+          다시 불러오기
+        </Button>
       </Container>
     </div>
   );
