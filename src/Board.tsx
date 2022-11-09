@@ -1,22 +1,10 @@
 import { Button, Col, Container, Row, Table } from "react-bootstrap";
 import axios from "axios";
 import { useEffect, useState } from "react";
-
-type Comment = {
-  content: string;
-  date: string;
-  post: Post;
-};
-type Post = {
-  board: string;
-  title: string;
-  content: string;
-  date: string;
-  comments: Comment[];
-};
+import { PostList } from "./types";
 
 function Board() {
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<PostList[]>([]);
   const [loading, setLoading] = useState(false);
 
   const fetchPosts = async () => {
@@ -65,7 +53,7 @@ function Board() {
             {posts.map((post) => (
               <tr>
                 <td>{post.title}</td>
-                <td>{post.comments.length}</td>
+                <td>{post.commentNum}</td>
                 <td>{post.date}</td>
               </tr>
             ))}
