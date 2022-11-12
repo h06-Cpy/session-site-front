@@ -11,6 +11,7 @@ export type Post = {
   comments: Comment[];
 };
 export type PostList = {
+  id: number;
   title: string;
   date: string;
   commentNum: number;

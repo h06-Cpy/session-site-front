@@ -2,6 +2,7 @@ import { Button, Col, Container, Row, Table } from "react-bootstrap";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { PostList } from "./types";
+import { Link } from "react-router-dom";
 
 function Board() {
   const [posts, setPosts] = useState<PostList[]>([]);
@@ -52,7 +53,9 @@ function Board() {
           <tbody>
             {posts.map((post) => (
               <tr>
-                <td>{post.title}</td>
+                <td>
+                  <Link to={`/${post.id}`}>{post.title}</Link>
+                </td>
                 <td>{post.commentNum}</td>
                 <td>{post.date}</td>
               </tr>
