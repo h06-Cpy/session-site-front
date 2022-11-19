@@ -1,17 +1,15 @@
 export type Comment = {
-  content: string;
-  date: string;
-  post: Post;
+  commentContent: string;
+  commentDate: string;
 };
 export type Post = {
-  board: string;
-  title: string;
-  content: string;
-  date: string;
+  postTitle: string;
+  postContent: string;
+  postDate: string;
   comments: Comment[];
 };
 export type PostList = {
-  id: number;
+  postId: number;
   title: string;
   date: string;
   commentNum: number;

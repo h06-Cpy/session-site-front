@@ -54,7 +54,7 @@ function Board() {
             {posts.map((post) => (
               <tr>
                 <td>
-                  <Link to={`/${post.id}`}>{post.title}</Link>
+                  <Link to={`/${post.postId}`}>{post.title}</Link>
                 </td>
                 <td>{post.commentNum}</td>
                 <td>{post.date}</td>

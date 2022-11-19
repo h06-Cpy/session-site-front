@@ -1,4 +1,4 @@
-import { Container } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { Post } from "./types";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -29,8 +29,21 @@ function Detail() {
   return (
     <div>
       <Container>
-        <h1>{post?.title}</h1>
-        <p>{post?.content}</p>
+        <h1>{post?.postTitle}</h1>
+        <hr></hr>
+        <p>{post?.postContent}</p>
+        <hr></hr>
+        <h3>{post?.comments.length}개의 댓글</h3>
+        <hr></hr>
+        {post?.comments.map((comment) => {
+          return (
+            <div>
+              <p>{comment.commentContent}</p>
+              <p>{comment.commentDate}</p>
+              <hr></hr>
+            </div>
+          );
+        })}
       </Container>
     </div>
   );
