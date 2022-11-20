@@ -1,8 +1,9 @@
 import { Col, Container, Row } from "react-bootstrap";
-import { Post } from "./types";
+import { Post } from "../types";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import DateTimeParser from "../DateTimeParser";
 
 function Detail() {
   const { id } = useParams();
@@ -32,14 +33,14 @@ function Detail() {
         <h1>{post?.postTitle}</h1>
         <hr></hr>
         <p>{post?.postContent}</p>
-        <hr></hr>
+        <p>{DateTimeParser(post!.createdDate)}</p>
         <h3>{post?.comments.length}개의 댓글</h3>
         <hr></hr>
         {post?.comments.map((comment) => {
           return (
             <div>
-              <p>{comment.commentContent}</p>
-              <p>{comment.commentDate}</p>
+              <p>{comment.content}</p>
+              <p>{DateTimeParser(comment.createdDate)}</p>
               <hr></hr>
             </div>
           );

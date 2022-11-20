@@ -1,16 +1,16 @@
 export type Comment = {
-  commentContent: string;
-  commentDate: string;
+  content: string;
+  createdDate: string;
 };
 export type Post = {
   postTitle: string;
   postContent: string;
-  postDate: string;
+  createdDate: string;
   comments: Comment[];
 };
 export type PostList = {
   postId: number;
   title: string;
-  date: string;
+  createdDate: string;
   commentNum: number;
 };

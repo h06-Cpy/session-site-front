@@ -1,8 +1,9 @@
 import { Button, Col, Container, Row, Table } from "react-bootstrap";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { PostList } from "./types";
+import { PostList } from "../types";
 import { Link } from "react-router-dom";
+import DateTimeParser from "../DateTimeParser";
 
 function Board() {
   const [posts, setPosts] = useState<PostList[]>([]);
@@ -57,7 +58,7 @@ function Board() {
                   <Link to={`/${post.postId}`}>{post.title}</Link>
                 </td>
                 <td>{post.commentNum}</td>
-                <td>{post.date}</td>
+                <td>{DateTimeParser(post.createdDate)}</td>
               </tr>
             ))}
           </tbody>
