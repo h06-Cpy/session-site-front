@@ -1,16 +1,18 @@
-export type Comment = {
+export interface Comment {
   content: string;
   createdDate: string;
-};
-export type Post = {
+}
+
+export interface Post {
   postTitle: string;
   postContent: string;
   createdDate: string;
   comments: Comment[];
-};
-export type PostList = {
+}
+
+export interface PostList {
   postId: number;
   title: string;
   createdDate: string;
   commentNum: number;
-};
+}

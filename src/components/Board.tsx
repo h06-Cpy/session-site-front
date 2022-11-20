@@ -1,7 +1,7 @@
 import { Button, Col, Container, Row, Table } from "react-bootstrap";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { PostList } from "../types";
+import { PostList } from "../interfaces";
 import { Link } from "react-router-dom";
 import DateTimeParser from "../DateTimeParser";
 

@@ -1,5 +1,5 @@
 import { Col, Container, Row } from "react-bootstrap";
-import { Post } from "../types";
+import { Post } from "../interfaces";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -26,6 +26,7 @@ function Detail() {
   }, []);
 
   if (loading) return <div>loading</div>;
+  if (post === undefined) return <div>data couldn't be loaded</div>;
 
   return (
     <div>
@@ -33,7 +34,7 @@ function Detail() {
         <h1>{post?.postTitle}</h1>
         <hr></hr>
         <p>{post?.postContent}</p>
-        <p>{DateTimeParser(post!.createdDate)}</p>
+        <p>{DateTimeParser(post?.createdDate)}</p>
         <h3>{post?.comments.length}개의 댓글</h3>
         <hr></hr>
         {post?.comments.map((comment) => {
