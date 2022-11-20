@@ -26,7 +26,7 @@ function Detail() {
   }, []);
 
   if (loading) return <div>loading</div>;
-  if (post === undefined) return <div>data couldn't be loaded</div>;
+  if (post === undefined) return <div>data can't be loaded</div>;
 
   return (
     <div>
@@ -35,11 +35,11 @@ function Detail() {
         <hr></hr>
         <p>{post?.postContent}</p>
         <p>{DateTimeParser(post?.createdDate)}</p>
-        <h3>{post?.comments.length}개의 댓글</h3>
+        <h3>댓글 {post?.comments.length}개</h3>
         <hr></hr>
         {post?.comments.map((comment) => {
           return (
-            <div>
+            <div key={comment.createdDate}>
               <p>{comment.content}</p>
               <p>{DateTimeParser(comment.createdDate)}</p>
               <hr></hr>

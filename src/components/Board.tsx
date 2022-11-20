@@ -33,7 +33,9 @@ function Board() {
         <div>
           <Row>
             <Col>
-              <Button variant="dark">글쓰기</Button>
+              <Link to={"/newPost"}>
+                <Button variant="dark">글쓰기</Button>
+              </Link>
             </Col>
             <Col>
               <input type="text" id="find" />
@@ -53,7 +55,7 @@ function Board() {
           </thead>
           <tbody>
             {posts.map((post) => (
-              <tr>
+              <tr key={post.postId}>
                 <td>
                   <Link to={`/${post.postId}`}>{post.title}</Link>
                 </td>

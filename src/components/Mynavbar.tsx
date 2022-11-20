@@ -1,11 +1,15 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Nav, Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function Mynavbar() {
   return (
     <div>
       <Navbar collapseOnSelect bg="dark" expand="lg" variant="dark">
-        <Navbar.Brand href=".">Session</Navbar.Brand>
+        <Link to={"/"}>
+          <Navbar.Brand className="mx-3">Session</Navbar.Brand>
+        </Link>
+
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
