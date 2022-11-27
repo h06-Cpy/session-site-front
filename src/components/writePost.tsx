@@ -1,8 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const WritePost = () => {
+  const navigate = useNavigate(); //navigate for redirect after form submit
+
   const [title, setTitle] = useState<String>();
   const [content, setContent] = useState<String>();
   const [board, setBoard] = useState<String>("smalltalk");
@@ -31,6 +34,8 @@ const WritePost = () => {
       .catch((error) => {
         console.log(error);
       });
+    navigate("/");
+    navigate(0);
   };
 
   return (
