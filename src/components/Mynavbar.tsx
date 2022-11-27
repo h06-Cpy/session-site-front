@@ -13,7 +13,7 @@ function Mynavbar() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#잡담방">잡담방(익명)</Nav.Link>
+            <Nav.Link href="#잡담방">잡담방</Nav.Link>
             <Nav.Link href="#퀴즈">퀴즈</Nav.Link>
           </Nav>
           <Nav className="d-flex">
