@@ -6,7 +6,7 @@ function Mynavbar() {
   return (
     <div>
       <Navbar collapseOnSelect bg="dark" expand="lg" variant="dark">
-        <Link to={"/"}>
+        <Link to={"/"} style={{ textDecoration: "none" }}>
           <Navbar.Brand className="mx-3">Session</Navbar.Brand>
         </Link>
 

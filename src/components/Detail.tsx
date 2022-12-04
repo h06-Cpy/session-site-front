@@ -29,7 +29,7 @@ function Detail() {
     try {
       setPost(undefined);
       setLoading(true);
-      const response = await axios.get(`http://localhost:8080/${id}`);
+      const response = await axios.get(`http://localhost:8080/post?=${id}`);
       setPost(response.data);
     } catch (e) {
       return <div>error occured</div>;
@@ -72,8 +72,8 @@ function Detail() {
             <Form.Control
               required
               as="textarea"
-              placeholder="내용"
-              rows={7}
+              placeholder="댓글"
+              rows={3}
               onChange={handleContentChange}
             />
           </Form.Group>

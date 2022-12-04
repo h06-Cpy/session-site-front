@@ -49,8 +49,8 @@ function Board() {
           <thead>
             <tr>
               <th>제목</th>
-              <th>댓글수</th>
-              <th>작성일시</th>
+              <th>댓글</th>
+              <th>작성 일시</th>
             </tr>
           </thead>
           <tbody>

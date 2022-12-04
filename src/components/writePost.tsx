@@ -70,6 +70,7 @@ const WritePost = () => {
               name="group1"
               label="공지방에"
               onChange={handleRadioChange}
+              required
             />
             <Form.Check
               inline
