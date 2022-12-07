@@ -27,6 +27,10 @@ function Board() {
     fetchPosts();
   }, []);
 
+  useEffect(() => {
+    fetchPosts();
+  }, [board]);
+
   if (loading) return <div>loading</div>;
 
   return (
