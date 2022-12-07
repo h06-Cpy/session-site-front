@@ -6,14 +6,15 @@ function Mynavbar() {
   return (
     <div>
       <Navbar collapseOnSelect bg="dark" expand="lg" variant="dark">
-        <Link to={"/"} style={{ textDecoration: "none" }}>
-          <Navbar.Brand className="mx-3">Session</Navbar.Brand>
-        </Link>
+        <Navbar.Brand href="main" className="mx-3">
+          Session
+        </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#잡담방">잡담방</Nav.Link>
+            <Nav.Link href="smalltalk">잡담방</Nav.Link>
+
             <Nav.Link href="#퀴즈">퀴즈</Nav.Link>
           </Nav>
           <Nav className="d-flex">

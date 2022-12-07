@@ -12,7 +12,8 @@ function App() {
         <Mynavbar />
         <Routes>
           <Route path="/" element={<Board />} />
-          <Route path="/:id" element={<Detail />} />
+          <Route path="/:board" element={<Board />} />
+          <Route path="/post/:id" element={<Detail />} />
           <Route path="/newPost" element={<WritePost />} />
         </Routes>
       </Router>

@@ -29,7 +29,7 @@ function Detail() {
     try {
       setPost(undefined);
       setLoading(true);
-      const response = await axios.get(`http://localhost:8080/post?=${id}`);
+      const response = await axios.get(`http://localhost:8080/post?id=${id}`);
       setPost(response.data);
     } catch (e) {
       return <div>error occured</div>;

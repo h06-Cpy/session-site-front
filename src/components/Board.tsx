@@ -2,18 +2,20 @@ import { Button, Col, Container, Row, Table } from "react-bootstrap";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { PostList } from "../interfaces";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import DateTimeParser from "../DateTimeParser";
 
 function Board() {
+  let { board } = useParams();
   const [posts, setPosts] = useState<PostList[]>([]);
   const [loading, setLoading] = useState(false);
 
+  if (board === undefined) board = "";
   const fetchPosts = async () => {
     try {
       setPosts([]);
       setLoading(true);
-      const response = await axios.get("http://localhost:8080");
+      const response = await axios.get(`http://localhost:8080/${board}`);
       setPosts(response.data);
     } catch (e) {
       return <div>error occured</div>;
@@ -57,7 +59,7 @@ function Board() {
             {posts.map((post) => (
               <tr key={post.postId}>
                 <td>
-                  <Link to={`/${post.postId}`}>{post.title}</Link>
+                  <Link to={`/post/${post.postId}`}>{post.title}</Link>
                 </td>
                 <td>{post.commentNum}</td>
                 <td>{DateTimeParser(post.createdDate)}</td>
