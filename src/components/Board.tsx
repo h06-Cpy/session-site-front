@@ -2,25 +2,33 @@ import { Button, Col, Container, Row, Table } from "react-bootstrap";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { PostList } from "../interfaces";
-import { Link, useParams } from "react-router-dom";
+import { Form, Link, useParams } from "react-router-dom";
 import DateTimeParser from "../DateTimeParser";
 
 function Board() {
   let { board } = useParams();
+  const [page, setPage] = useState(0);
   const [posts, setPosts] = useState<PostList[]>([]);
   const [loading, setLoading] = useState(false);
 
   if (board === undefined) board = "";
+
   const fetchPosts = async () => {
     try {
       setPosts([]);
       setLoading(true);
-      const response = await axios.get(`http://localhost:8080/${board}`);
+      const response = await axios.get(
+        `http://localhost:8080/${board}?page=${page}&size=10`
+      );
       setPosts(response.data);
     } catch (e) {
       return <div>error occured</div>;
     }
     setLoading(false);
+  };
+
+  const handlePageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPage(event.currentTarget.valueAsNumber);
   };
 
   useEffect(() => {
@@ -29,7 +37,7 @@ function Board() {
 
   useEffect(() => {
     fetchPosts();
-  }, [board]);
+  }, [board, page]);
 
   if (loading) return <div>loading</div>;
 
@@ -44,10 +52,8 @@ function Board() {
               </Link>
             </Col>
             <Col>
-              <input type="text" id="find" />
-              <a href=".">
-                <button>찾기</button>
-              </a>
+              <input className="mx-1" type="text" id="find" />
+              <button>찾기</button>
             </Col>
           </Row>
         </div>
@@ -71,9 +77,20 @@ function Board() {
             ))}
           </tbody>
         </Table>
-        <Button variant="light" onClick={fetchPosts}>
+        <Button variant="light" className="mb-3" onClick={fetchPosts}>
           다시 불러오기
         </Button>
+        <div>
+          <input
+            className="mx-1"
+            type="number"
+            id="page"
+            defaultValue={page}
+            min="0"
+            onChange={handlePageChange}
+          />
+          <label htmlFor="page">페이지</label>
+        </div>
       </Container>
     </div>
   );
